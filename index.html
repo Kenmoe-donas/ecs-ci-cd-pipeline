@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevOps & Cloud Engineer Resume</title>
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --accent: #2980b9;
+            --text: #333333;
+            --light-bg: #f8f9fa;
+            --border: #e0e0e0;
+        }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            color: var(--text);
+            line-height: 1.4;
+            background-color: #fff;
+            padding: 0.5in;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        header {
+            text-align: center;
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 12px;
+            margin-bottom: 15px;
+        }
+        h1 {
+            font-size: 24px;
+            color: var(--primary);
+            margin-bottom: 4px;
+            letter-spacing: 0.5px;
+        }
+        .subtitle {
+            font-size: 14px;
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+        .contact-info {
+            font-size: 11px;
+            color: #555;
+        }
+        .contact-info span {
+            margin: 0 8px;
+        }
+        section {
+            margin-bottom: 14px;
+        }
+        h2 {
+            font-size: 13px;
+            text-transform: uppercase;
+            color: var(--primary);
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 3px;
+            margin-bottom: 8px;
+            letter-spacing: 0.5px;
+        }
+        p, li {
+            font-size: 11.5px;
+        }
+        .summary {
+            margin-bottom: 8px;
+        }
+        .skills-grid {
+            display: grid;
+            grid-template-columns: 140px 1fr;
+            gap: 6px;
+            font-size: 11.5px;
+            margin-bottom: 4px;
+        }
+        .skills-category {
+            font-weight: 600;
+            color: var(--primary);
+        }
+        .job {
+            margin-bottom: 10px;
+        }
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 2px;
+        }
+        .job-title {
+            font-weight: 600;
+            font-size: 12px;
+            color: var(--primary);
+        }
+        .company {
+            font-weight: 600;
+            color: var(--accent);
+        }
+        .job-date {
+            font-size: 11px;
+            color: #666;
+            font-style: italic;
+        }
+        ul {
+            padding-left: 15px;
+            margin-top: 3px;
+        }
+        li {
+            margin-bottom: 3px;
+        }
+        .education-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 11.5px;
+        }
+        @media print {
+            body {
+                padding: 0;
+            }
+            .container {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>Alex Morgan</h1>
+        <div class="subtitle">Senior DevOps & Cloud Engineer</div>
+        <div class="contact-info">
+            <span>San Francisco, CA</span> |
+            <span>alex.morgan@email.com</span> |
+            <span>(555) 234-5678</span> |
+            <span>linkedin.com/in/alexmorgan</span> |
+            <span>github.com/alexm-devops</span>
+        </div>
+    </header>
+
+    <section class="summary">
+        <h2>Professional Summary</h2>
+        <p>Results-driven DevOps and Cloud Engineer with 6 years of experience designing, automating, and scaling high-availability cloud infrastructure on AWS. Proven track record of accelerating software delivery pipelines, optimizing cloud expenditure by 35%, and implementing robust GitOps workflows using Terraform, Kubernetes, and ArgoCD.</p>
+    </section>
+
+    <section>
+        <h2>Technical Skills</h2>
+        <div class="skills-grid">
+            <div class="skills-category">Cloud & Platforms:</div>
+            <div>AWS (EKS, EC2, RDS, IAM, S3, Lambda, CloudFront, VPC), Kubernetes, Docker</div>
+        </div>
+        <div class="skills-grid">
+            <div class="skills-category">IaC & Configuration:</div>
+            <div>Terraform, Terragrunt, Ansible, CloudFormation, Helm</div>
+        </div>
+        <div class="skills-grid">
+            <div class="skills-category">CI/CD & GitOps:</div>
+            <div>GitHub Actions, GitLab CI, ArgoCD, Jenkins, Docker Hub</div>
+        </div>
+        <div class="skills-grid">
+            <div class="skills-category">Observability:</div>
+            <div>Prometheus, Grafana, Datadog, AWS CloudWatch, ELK Stack</div>
+        </div>
+        <div class="skills-grid">
+            <div class="skills-category">Languages & Scripting:</div>
+            <div>Python, Bash, Go (Basic), YAML, SQL</div>
+        </div>
+    </section>
+
+    <section>
+        <h2>Professional Experience</h2>
+        
+        <div class="job">
+            <div class="job-header">
+                <div><span class="job-title">Senior DevOps Engineer</span> — <span class="company">CloudScale Technologies</span></div>
+                <div class="job-date">2023 – Present</div>
+            </div>
+            <ul>
+                <li>Architected and managed multi-region AWS EKS clusters serving 5M+ daily active users, maintaining 99.99% system uptime.</li>
+                <li>Migrated legacy infrastructure to Terraform, reducing environment provisioning time from days to under 15 minutes.</li>
+                <li>Implemented GitOps continuous deployment pipelines utilizing ArgoCD and GitHub Actions, boosting developer deployment frequency by 300%.</li>
+                <li>Optimized AWS compute and storage costs through automated rightsizing and spot-instance integration, yielding annual savings of $120K.</li>
+            </ul>
+        </div>
+
+        <div class="job">
+            <div class="job-header">
+                <div><span class="job-title">DevOps Engineer</span> — <span class="company">Apex SaaS Solutions</span></div>
+                <div class="job-date">2021 – 2023</div>
+            </div>
+            <ul>
+                <li>Containerized monolithic applications into microservices using Docker and orchestrated deployments on Kubernetes.</li>
+                <li>Engineered comprehensive monitoring dashboards with Prometheus and Grafana, reducing Mean Time to Resolution (MTTR) by 45%.</li>
+                <li>Enforced security compliance standards (SOC2, HIPAA) across AWS environments utilizing IAM policies, AWS KMS, and automated vulnerability scanning.</li>
+                <li>Maintained automated CI/CD pipelines supporting 40+ software engineers across multiple cross-functional squads.</li>
+            </ul>
+        </div>
+
+        <div class="job">
+            <div class="job-header">
+                <div><span class="job-title">Junior Systems / Cloud Engineer</span> — <span class="company">DataFlow Systems</span></div>
+                <div class="job-date">2020 – 2021</div>
+            </div>
+            <ul>
+                <li>Provisioned and configured AWS cloud resources (EC2, VPC, RDS, S3) adhering to infrastructure-as-code best practices.</li>
+                <li>Wrote automated maintenance and backup scripts in Python and Bash, eliminating manual operations overhead.</li>
+                <li>Participated in 24/7 rotation for incident response, resolving production alerts and maintaining system logs.</li>
+            </ul>
+        </div>
+    </section>
+
+    <section>
+        <h2>Certifications</h2>
+        <p><strong>AWS Certified DevOps Engineer – Professional</strong> (2023) | <strong>AWS Certified Solutions Architect – Associate</strong> (2021) | <strong>Certified Kubernetes Administrator (CKA)</strong> (2022)</p>
+    </section>
+
+    <section>
+        <h2>Education</h2>
+        <div class="education-row">
+            <div><strong>B.S. in Computer Science</strong> — University of California, Berkeley</div>
+            <div>2016 – 2020</div>
+        </div>
+    </section>
+</div>
+
+</body>
+</html>
