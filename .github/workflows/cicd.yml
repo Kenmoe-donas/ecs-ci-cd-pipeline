@@ -80,10 +80,12 @@ jobs:
           docker push \
           ${{ steps.login-ecr.outputs.registry }}/${{ vars.ECR_REPOSITORY }}:${{ github.sha }}
 
-      - name: Update ECS Service
+
+      - name: Update ECS Service and Force ECS Redeployment
         run: |
           aws ecs update-service \
-            --cluster myapp-cluster \
-            --service myapp-service \
+            --cluster nginx-cluster \
+            --service nginx-service \
             --force-new-deployment \
             --region us-east-1
+    
