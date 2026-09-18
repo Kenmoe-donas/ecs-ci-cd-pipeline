@@ -85,4 +85,5 @@ jobs:
           aws ecs update-service \
             --cluster myapp-cluster \
             --service myapp-service \
-            --force-new-deployment
+            --force-new-deployment \
+            --region us-east-1
