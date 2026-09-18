@@ -83,23 +83,25 @@ jobs:
 
       - name: Download current task definition
         run: |
-          aws ecs describe-task-definition --task-definition nginx-task \
-          --query taskDefinition > task-def.json
-            
+          aws ecs describe-task-definition \
+            --task-definition nginx-task \
+            --query taskDefinition \
+            > task-def.json
+
       - name: Update image in task definition
-          id: task-def
-          uses: aws-actions/amazon-ecs-render-task-definition@v1
-          with:
-            task-definition: task-def.json
-            container-name: nginx
-            image: ${{ steps.login-ecr.outputs.registry }}/${{ vars.ECR_REPOSITORY }}:${{ github.sha }}
-            
+        id: task-def
+        uses: aws-actions/amazon-ecs-render-task-definition@v1
+        with:
+          task-definition: task-def.json
+          container-name: nginx
+          image: ${{ steps.login-ecr.outputs.registry }}/${{ vars.ECR_REPOSITORY }}:${{ github.sha }}
+
       - name: Deploy to ECS
-          uses: aws-actions/amazon-ecs-deploy-task-definition@v2
-          with:
-            task-definition: ${{ steps.task-def.outputs.task-definition }}
-            service: nginx-service
-            cluster: nginx-ecs-cluster
+        uses: aws-actions/amazon-ecs-deploy-task-definition@v2
+        with:
+          task-definition: ${{ steps.task-def.outputs.task-definition }}
+          service: nginx-service
+          cluster: nginx-cluster
 
       - name: Update ECS Service and Force ECS Redeployment
         run: |
