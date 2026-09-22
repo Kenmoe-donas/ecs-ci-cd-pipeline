@@ -1,5 +1,6 @@
 provider "aws" {
   region = "us-east-1"
+  #region = vars.AWS_REGION
 }
 
 # Fetch default VPC and Subnets to make the setup self-contained
@@ -190,99 +191,57 @@ output "alb_dns_name" {
 
 /*
 provider "aws" {
-
   region = "us-east-1"
-
 }
 
 # 1. Default VPC and Subnets
-
 data "aws_vpc" "default" {
-
   default = true
-
 }
 
 data "aws_subnets" "default" {
-
   filter {
-
     name   = "vpc-id"
-
     values = [data.aws_vpc.default.id]
-
   }
-
 }
 
 # 2. Security Groups
-
 resource "aws_security_group" "alb_sg" {
-
   name        = "nginx-alb-sg"
-
   description = "Allow HTTP inbound to ALB"
-
   vpc_id      = data.aws_vpc.default.id
-
   ingress {
-
     from_port   = 80
-
     to_port     = 80
-
     protocol    = "tcp"
-
     cidr_blocks = ["0.0.0.0/0"]
-
   }
 
   egress {
-
     from_port   = 0
-
     to_port     = 0
-
     protocol    = "-1"
-
     cidr_blocks = ["0.0.0.0/0"]
-
   }
-
 }
 
 resource "aws_security_group" "ecs_tasks_sg" {
-
   name        = "nginx-ecs-tasks-sg"
-
   description = "Allow inbound traffic from ALB only"
-
   vpc_id      = data.aws_vpc.default.id
-
   ingress {
-
     from_port       = 80
-
     to_port         = 80
-
     protocol        = "tcp"
-
     security_groups = [aws_security_group.alb_sg.id]
-
   }
-
   egress {
-
     from_port   = 0
-
     to_port     = 0
-
     protocol    = "-1"
-
     cidr_blocks = ["0.0.0.0/0"]
-
   }
-
 }
 
 # 3. Application Load Balancer & Target Group
