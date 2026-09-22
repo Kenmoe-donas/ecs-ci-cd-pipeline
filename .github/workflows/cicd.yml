@@ -9,6 +9,14 @@ permissions:
   id-token: write
   contents: read
 
+env:
+  AWS_REGION: ${{ vars.AWS_REGION }}
+  ECR_REPOSITOR: ${{vars.ECR_REPOSITORY}}
+  ECS_CLUSTER: ${{ vars.MY_CLUSTER }}
+  ECS_SERVICE: ${{ vars.MY_SERVICE }}
+  ECS_TASK: ${{ vars.MY_TASK }}
+  CONTAINER_NAME: ${{ vars.MY_APP }}
+
 jobs:
 
   build:
@@ -32,13 +40,23 @@ jobs:
       - name: Build Docker Image
         run: |
           docker build -t ${{ vars.ECR_REPOSITORY }} .
+      
+      - name: Scan the image (trivy)
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: '${{ vars.ECR_REPOSITORY }}'
+          format: 'table'
+          exit-code: '0'
+          ignore-unfixed: true
+          vuln-type: 'os,library'
+          severity: 'CRITICAL,HIGH'
 
       - name: Tag Docker Image
         run: |
           docker tag ${{ vars.ECR_REPOSITORY }}:latest \
           ${{ steps.login-ecr.outputs.registry }}/${{ vars.ECR_REPOSITORY }}:latest
 
-      - name: Push Docker Image
+      - name: Push Docker Image to ECR
         run: |
           docker push \
           ${{ steps.login-ecr.outputs.registry }}/${{ vars.ECR_REPOSITORY }}:latest
